@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!--        Default Templates -->
+        <record id="ks_blank" model="ks_dashboard_mtn.board_template">
+            <field name="name">Blank</field>
+            <field name="ks_item_count">0</field>
+        </record>
+        <record id="ks_my_default_dashboard_board" model="ks_dashboard_mtn.board">
+            <field name="name">لوحة المعلومات</field>
+            <field name="ks_dashboard_state">Locked</field> 
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record>
+ 
+        <record id="litigation" model="ks_dashboard_mtn.item">  
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">attendance</field>
+            <field name="ks_model_id" eval="ref('hr_attendance.model_hr_attendance_report')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">balance-scale</field>
+            <field name="ks_dashboard_item_theme">softyellow</field>
+            <field name="ks_background_color">#e1ca49,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/> 
+        </record>   
+        
+        <record id="consulting" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Attending</field> 
+            <field name="ks_model_id" eval="ref('hr_attendance.model_hr_attendance_report')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">briefcase</field>
+            <field name="ks_dashboard_item_theme">Slightlydesaturatedcyan</field>
+            <field name="ks_background_color">#72abb3,0.99</field> 
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+                
+        <record id="worked_hours" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Attending today</field>
+            <field name="ks_model_id" eval="ref('hr_attendance.model_hr_attendance_report')"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr_attendance.field_hr_attendance_report__worked_hours')"/> 
+            <field name="ks_date_filter_field" eval="ref('hr_attendance.field_hr_attendance_report__check_in')"/>
+            <field name="ks_sort_by_field" eval="ref('hr_attendance.field_hr_attendance_report__worked_hours')"/>
+            <field name="ks_list_view_type">ungrouped</field>
+            <field name="ks_list_view_fields" eval="[(6, 0, [ref('hr_attendance.field_hr_attendance_report__worked_hours'),ref('hr_attendance.field_hr_attendance_report__employee_id'),ref('hr_attendance.field_hr_attendance_report__check_in')])]"/>
+            <field name="ks_dashboard_item_type">ks_list_view</field>
+            <field name="ks_date_filter_selection">l_day</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('hr_attendance.group_hr_attendance_manager'))]"/>
+        </record> 
+        
+        <record id="ks_default_item_5" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Bar Chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_groupby_type">relational_type</field>
+            <field name="ks_model_id" eval="ref('base.model_res_country')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('base.field_res_country__phone_code')])]"/>
+            <!--            <field name="ks_chart_measure_field" eval="[ref('base.field_res_country__phone_code')]"/>-->
+            <field name="ks_chart_relation_groupby" eval="ref('base.field_res_country__currency_id')"/>
+            <field name="ks_domain">[["id","&lt;",40]]</field>
+            <field name="ks_chart_item_color">warm</field>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="ks_default_item_7" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Pie Chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_groupby_type">relational_type</field>
+            <field name="ks_model_id" eval="ref('base.model_res_country')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('base.field_res_country__phone_code')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('base.field_res_country__currency_id')"/>
+            <field name="ks_domain">[["id","&lt;",10]]</field>
+            <field name="ks_dashboard_item_type">ks_pie_chart</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+         
+        <record id="ks_default_item_14" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Pie Chart1</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_groupby_type">relational_type</field>
+            <field name="ks_model_id" eval="ref('base.model_res_country')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('base.field_res_country__phone_code')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('base.field_res_country__currency_id')"/>
+            <field name="ks_domain">[["id","&lt;",10]]</field>
+            <field name="ks_chart_item_color">neon</field>
+            <field name="ks_dashboard_item_type">ks_pie_chart</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+
+   </data>
+</odoo>

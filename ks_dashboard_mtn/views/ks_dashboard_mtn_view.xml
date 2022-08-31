@@ -1,0 +1,359 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="ks_dashboard_mtn.board_form">
+            <field name="name">ks_dashboard_mtn View</field>
+            <field name="model">ks_dashboard_mtn.board</field>
+            <field name="arch" type="xml">
+                <form string="Dashboards">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ks_dashboard_state" invisible="1"/>
+                                <field name="name" attrs="{'readonly':[('ks_dashboard_state','=','Locked')]}"/>
+                                <field name="ks_dashboard_menu_name" attrs="{'readonly':[('ks_dashboard_state','=','Locked')],
+                                                                                         'required':[('ks_dashboard_state','!=','Locked')]}"/>
+                                <field name="ks_set_interval"/>
+                            </group>
+                            <group>
+                                <field name="ks_dashboard_default_template"
+                                       attrs="{'readonly':[('id','>', 0)], 'required':[('id','&lt;', 1)]}"
+                                       options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                                <!--                                <field name="ks_set_interval"/>-->
+                                <field name="ks_dashboard_top_menu_id"
+                                       options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" attrs="{'readonly':[('ks_dashboard_state','=','Locked')],
+                                                                                            'required':[('ks_dashboard_state','!=','Locked')]}"/>
+                                <field name="ks_dashboard_menu_sequence"/>
+                                <field name="ks_dashboard_active"
+                                       attrs="{'readonly':[('ks_dashboard_state','=','Locked')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="pre_defined_filters" string="Pre Defined Filters">
+                                <field name="ks_dashboard_defined_filters_ids" widget="section_and_note_one2many">
+                                    <tree>
+                                        <control>
+                                            <create name="add_filter_control" string="Add a filter"/>
+                                            <create name="add_section_control" string="Add a separator"
+                                                    context="{'default_display_type': 'line_section'}"/>
+                                        </control>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="display_type" invisible="1"/>
+                                        <field name="id" invisible="1"/>
+                                        <field name="ks_model_name" invisible="1"/>
+                                        <field name="name"/>
+                                        <field name="ks_model_id"/>
+                                        <field name="ks_domain"/>
+                                        <field name="ks_is_active"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="custom_defined_filters" string="Custom Filters">
+                                <field name="ks_dashboard_custom_filters_ids">
+                                    <tree editable="bottom">
+                                        <field name="name" required="1"/>
+                                        <field name="ks_model_id" required="1"/>
+                                        <field name="ks_domain_field_id" required="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="advance_setting" string="Advance Settings">
+                                <group>
+                                    <group>
+                                        <field name="multi_layouts"/>
+                                        <field name="ks_dashboard_group_access" widget="many2many_tags"/>
+                                    </group>
+                                    <group>
+                                        <field name="ks_date_filter_selection" required="1"/>
+                                        <field name="ks_dashboard_start_date"
+                                               attrs="{'readonly':[('ks_date_filter_selection','!=','l_custom')], 'required':[('ks_date_filter_selection','=','l_custom')]}"/>
+                                        <field name="ks_dashboard_end_date"
+                                               attrs="{'readonly':[('ks_date_filter_selection','!=','l_custom')], 'required':[('ks_date_filter_selection','=','l_custom')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ks_dashboard_mtn.board_tree">
+            <field name="name">ks_dashboard_mtn View</field>
+            <field name="model">ks_dashboard_mtn.board</field>
+            <field name="arch" type="xml">
+                <tree import="0" string="لوحة معلوماتي">
+                    <field name="ks_dashboard_state" invisible="1"/>
+                    <field name="id" invisible="1"/>
+
+                    <field name="name"/>
+                    <field name="ks_dashboard_menu_name"
+                           attrs="{'required':[('ks_dashboard_state','!=','Locked')]}"/>
+                    <field name="ks_dashboard_menu_sequence"/>
+                    <field name="ks_dashboard_top_menu_id"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" attrs="{'readonly':[('ks_dashboard_state','=','Locked')],
+                                                                                            'required':[('ks_dashboard_state','!=','Locked')]}"/>
+                    <field name="ks_dashboard_active" attrs="{'readonly':[('ks_dashboard_state','=','Locked')]}"/>
+                    <field name="ks_dashboard_default_template"
+                           attrs="{'readonly':[('id','>', 0)], 'required':[('id','&lt;', 1)]}"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                    <field name="ks_set_interval"/>
+                    <field name="ks_date_filter_selection" required="1"/>
+                    <field name="ks_dashboard_start_date"
+                           attrs="{'readonly':[('ks_date_filter_selection','!=','l_custom')], 'required':[('ks_date_filter_selection','=','l_custom')]}"/>
+                    <field name="ks_dashboard_end_date"
+                           attrs="{'readonly':[('ks_date_filter_selection','!=','l_custom')], 'required':[('ks_date_filter_selection','=','l_custom')]}"/>
+                    <field name="ks_dashboard_group_access" widget="many2many_tags"/>
+                    <button name="ks_view_items_view" string="View Items" type="object" class="btn-primary"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ks_dashboard_mtn.board_template_form">
+            <field name="name">Dashboard Template Form View</field>
+            <field name="model">ks_dashboard_mtn.board_template</field>
+            <field name="arch" type="xml">
+                <form string="Dashboard Template">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="ks_template_type" readonly="1"/>
+                                <field name="ks_dashboard_board_id" attrs="{'invisible':[('ks_template_type','!=','ks_custom')],
+                                                                                         'required':[('ks_template_type','=','ks_code')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ks_dashboard_mtn.board_defined_filters">
+            <field name="name">Dashboard Defined Filter Form View</field>
+            <field name="model">ks_dashboard_mtn.board_defined_filters</field>
+            <field name="arch" type="xml">
+                <form string="Dashboard Defined Filter">
+                    <sheet>
+                        <group>
+                            <label for="name" string="Separator Name (eg. Order States, Deadlines)"
+                                   attrs="{'invisible': [('display_type', '!=', 'line_section')],
+                                   'required': [('display_type', '=', 'line_section')]}"/>
+                            <field name="name" nolabel="1"
+                                   attrs="{'invisible': [('display_type', '!=', 'line_section')]}"/>
+                            <group attrs="{'invisible': [('display_type', '=', 'line_section')]}">
+                                <field name="id" invisible="1"/>
+                                <field name="display_type" invisible="1"/>
+                                <field name="ks_model_name" invisible="1"/>
+                                <field name="name" attrs="{'required': [('display_type', '!=', 'line_section')]}"/>
+                                <field name="ks_domain_temp" invisible="1"/>
+                                <field name="ks_domain" widget="domain" class="ks_domain_content"
+                                       context="{'current_id': id}"
+                                       options="{'model': 'ks_model_name', 'in_dialog': True}"
+                                       attrs="{'required': [('display_type', '!=', 'line_section')]}"/>
+                            </group>
+                            <group attrs="{'invisible': [('display_type', '=', 'line_section')]}">
+                                <field name="ks_model_id"
+                                       attrs="{'required': [('display_type', '!=', 'line_section')]}"/>
+                                <field name="ks_is_active"
+                                       attrs="{'required': [('display_type', '!=', 'line_section')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ks_dashboard_mtn.board_template_tree">
+            <field name="name">Dashboard Template Tree View</field>
+            <field name="model">ks_dashboard_mtn.board_template</field>
+            <field name="arch" type="xml">
+                <tree string="Dashboard Template" editable="top">
+                    <field name="name"/>
+                    <field name="ks_template_type" invisible="1"/>
+                    <field name="ks_dashboard_board_id" attrs="{'readonly':[('ks_template_type','!=','ks_custom')],
+                        'required':[('ks_template_type','=','ks_custom')]}"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ks_dashboard_mtn.child_board_tree">
+            <field name="name">Dashboard Layout Tree View</field>
+            <field name="model">ks_dashboard_mtn.child_board</field>
+            <field name="arch" type="xml">
+                <tree string="Dashboard Layout" editable="top" create="0">
+                    <field name="name"/>
+                    <field name="ks_dashboard_mtn_id" string="Dashboard"/>
+                    <field name="company_id" string="Company"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Dashboard -->
+        <record id="ks_dashboard_mtn.board_dashboard_action_window" model="ir.actions.client">
+            <field name="name">لوحة معلومات</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_board')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_board')}"/>
+        </record>
+        
+<!--         <record id="ks_dashboard_mtn.litigation_dashboard_action_window" model="ir.actions.client">
+            <field name="name">القانونية</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')}"/>
+        </record>
+        
+        <record id="ks_dashboard_mtn.bills_dashboard_action_window" model="ir.actions.client">
+            <field name="name">المالية</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_bills')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_bills')}"/>
+        </record>
+        
+        <record id="ks_dashboard_mtn.hr_dashboard_action_window" model="ir.actions.client">
+            <field name="name">الموارد البشرية</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')}"/>
+        </record>
+        
+        <record id="ks_dashboard_mtn.app_dashboard_action_window" model="ir.actions.client">
+            <field name="name">تطبيقات</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_app')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_app')}"/>
+        </record> -->
+        
+<!--         <record id="ks_dashboard_mtn.Internal_slate_dashboard_action_window" model="ir.actions.client">
+            <field name="name">لوائح العمل الداخلية</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_Internal_slate')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_Internal_slate')}"/>
+        </record>
+        
+        <record id="ks_dashboard_mtn.error404_dashboard_action_window" model="ir.actions.client">
+            <field name="name">التذاكر التقنية</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_error404')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_error404')}"/>
+        </record>
+        
+        <record id="ks_dashboard_mtn.helpdesk_dashboard_action_window" model="ir.actions.client">
+            <field name="name">خدمة العملاء</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_helpdesk')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_helpdesk')}"/>
+        </record>
+        
+        <record id="ks_dashboard_mtn.commitments_dashboard_action_window" model="ir.actions.client">
+            <field name="name">الالتتزام</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_commitments')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_commitments')}"/>
+        </record>
+        
+        <record id="ks_dashboard_mtn.balagh_dashboard_action_window" model="ir.actions.client">
+            <field name="name">بلاغ</field>
+            <field name="tag">ks_dashboard_mtn</field>
+            <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_balagh')}"/>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="context" eval="{'ks_dashboard_id': ref('ks_dashboard_mtn.ks_my_default_dashboard_balagh')}"/>
+        </record> -->
+
+
+        <record model="ir.actions.act_window" id="ks_dashboard_mtn.board_form_tree_action_window">
+            <field name="name">لوحة معلومات المدير</field>
+            <field name="res_model">ks_dashboard_mtn.board</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'form_view_ref':'ks_dashboard_mtn.board_form',
+                'tree_view_ref':'ks_dashboard_mtn.board_tree'}
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ks_dashboard_mtn.template_tree_action_window">
+            <field name="name">قالب لوحة المعلومات</field>
+            <field name="res_model">ks_dashboard_mtn.board_template</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'default_ks_template_type':'ks_custom'}
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ks_dashboard_mtn.layout_tree_action_window">
+            <field name="name">تخطيط لوحة المعلومات</field>
+            <field name="res_model">ks_dashboard_mtn.child_board</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('board_type', '!=', 'default')]</field>
+            <field name="context">{'group_by':'ks_dashboard_menu_name'}
+            </field>
+        </record>
+
+        <menuitem name="لوحة المعلومات" id="ks_dashboard_mtn.board_menu_root"
+                  web_icon="ks_dashboard_mtn,static/description/icon.png"
+                  action="ks_dashboard_mtn.board_dashboard_action_window" groups="ks_dashboard_mtn_group_manager"/>
+        
+<!--         <menuitem name="القانونية" id="ks_dashboard_mtn.litigation_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.litigation_dashboard_action_window" sequence="1"/>
+        
+        <menuitem name="المالية" id="ks_dashboard_mtn.bills_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.bills_dashboard_action_window" sequence="2"/>
+        
+        <menuitem name="الموارد البشرية" id="ks_dashboard_mtn.hr_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.hr_dashboard_action_window" sequence="3"/>
+        
+        <menuitem name="تطبيقات" id="ks_dashboard_mtn.app_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.app_dashboard_action_window" sequence="4"/> -->
+        
+<!--         <menuitem name="لوائح العمل الداخلية" id="ks_dashboard_mtn.Internal_slate_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.Internal_slate_dashboard_action_window" sequence="5"/>
+        
+        <menuitem name="التذاكر التقنية" id="ks_dashboard_mtn.error404_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.error404_dashboard_action_window" sequence="6"/>
+        
+        <menuitem name="خدمة العملاء" id="ks_dashboard_mtn.helpdesk_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.helpdesk_dashboard_action_window" sequence="7"/>
+        
+        <menuitem name="الالتزام" id="ks_dashboard_mtn.commitments_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.commitments_dashboard_action_window" sequence="8"/>
+        
+        <menuitem name="بلاغ" id="ks_dashboard_mtn.balagh_menu_root"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  action="ks_dashboard_mtn.balagh_dashboard_action_window" sequence="9"/> -->
+        
+        <menuitem name="التكوين" id="ks_dashboard_mtn.configuration_menu"
+                  parent="ks_dashboard_mtn.board_menu_root"
+                  groups="ks_dashboard_mtn_group_manager" sequence="10"/>
+
+        <menuitem name="لوحة المعلومات" id="ks_dashboard_mtn.dashboard_menu"
+                  parent="ks_dashboard_mtn.configuration_menu"
+                  action="ks_dashboard_mtn.board_form_tree_action_window" groups="ks_dashboard_mtn_group_manager"/>
+
+        <menuitem name="تخطيط لوحة المعلومات" id="ks_dashboard_mtn.dashboard_layout_menu"
+                  parent="ks_dashboard_mtn.configuration_menu"
+                  action="ks_dashboard_mtn.layout_tree_action_window" groups="ks_dashboard_mtn_group_manager"/>
+
+        <!--        <menuitem name="Dashboard Templates" id="ks_dashboard_mtn.dashboard_template_menu"-->
+        <!--                  parent="ks_dashboard_mtn.configuration_menu"-->
+        <!--                  action="ks_dashboard_mtn.template_tree_action_window" groups="ks_dashboard_mtn_group_manager"/>-->
+
+    </data>
+</odoo>

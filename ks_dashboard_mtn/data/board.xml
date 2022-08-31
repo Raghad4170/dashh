@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+<!--         <record id="ks_my_default_dashboard_board" model="ks_dashboard_mtn.board">
+            <field name="name">لوحة المعلومات</field>
+            <field name="ks_dashboard_state">Locked</field> 
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record>
+
+        <record id="litigation" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">attendance</field>
+            <field name="ks_model_id" eval="ref('hr_attendance.model_hr_attendance_report')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">balance-scale</field>
+            <field name="ks_dashboard_item_theme">softyellow</field>
+            <field name="ks_background_color">#e1ca49,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>   
+        
+        <record id="consulting" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Attending</field> 
+            <field name="ks_model_id" eval="ref('hr_attendance.model_hr_attendance_report')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">briefcase</field>
+            <field name="ks_dashboard_item_theme">Slightlydesaturatedcyan</field>
+            <field name="ks_background_color">#72abb3,0.99</field> 
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record> -->
+                
+<!--         <record id="worked_hours" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Attending today</field>
+            <field name="ks_model_id" eval="ref('hr_attendance.model_hr_attendance_report')"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr_attendance.field_hr_attendance_report__worked_hours')"/> 
+            <field name="ks_date_filter_field" eval="ref('hr_attendance.field_hr_attendance_report__check_in')"/>
+            <field name="ks_sort_by_field" eval="ref('hr_attendance.field_hr_attendance_report__worked_hours')"/>
+            <field name="ks_list_view_type">ungrouped</field>
+            <field name="ks_list_view_fields" eval="[(6, 0, [ref('hr_attendance.field_hr_attendance_report__worked_hours'),ref('hr_attendance.field_hr_attendance_report__employee_id'),ref('hr_attendance.field_hr_attendance_report__check_in')])]"/>
+            <field name="ks_dashboard_item_type">ks_list_view</field>
+            <field name="ks_date_filter_selection">l_day</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('hr_attendance.group_hr_attendance_manager'))]"/>
+        </record> 
+        
+        <record id="ks_default_item_5" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Bar Chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_groupby_type">relational_type</field>
+            <field name="ks_model_id" eval="ref('base.model_res_country')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('base.field_res_country__phone_code')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('base.field_res_country__currency_id')"/>
+            <field name="ks_domain">[["id","&lt;",40]]</field>
+            <field name="ks_chart_item_color">warm</field>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_company_id" eval="0"/>
+        </record> -->
+        
+<!--         <record id="ks_default_item_7" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Pie Chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_groupby_type">relational_type</field>
+            <field name="ks_model_id" eval="ref('base.model_res_country')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('base.field_res_country__phone_code')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('base.field_res_country__currency_id')"/>
+            <field name="ks_domain">[["id","&lt;",10]]</field>
+            <field name="ks_dashboard_item_type">ks_pie_chart</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+         
+        <record id="ks_default_item_14" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_board')"/>
+            <field name="name">Pie Chart1</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_groupby_type">relational_type</field>
+            <field name="ks_model_id" eval="ref('base.model_res_country')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('base.field_res_country__phone_code')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('base.field_res_country__currency_id')"/>
+            <field name="ks_domain">[["id","&lt;",10]]</field>
+            <field name="ks_chart_item_color">neon</field>
+            <field name="ks_dashboard_item_type">ks_pie_chart</field>
+            <field name="ks_company_id" eval="0"/>
+        </record> -->
+        
+<!--         <record id="ks_my_default_dashboard_litigation" model="ks_dashboard_mtn.board">
+            <field name="name">التقارير القانونية</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record> 
+        
+        <record id="litigation_1" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">القضايا</field>
+            <field name="ks_model_id" eval="ref('litigation.model_litigation_litigation')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">balance-scale</field>
+            <field name="ks_dashboard_item_theme">softyellow</field>
+            <field name="ks_background_color">#e1ca49,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('litigation.group_law_lawyer'))]"/>
+        </record> 
+        
+        <record id="consulting_1" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">الاستشارات</field> 
+            <field name="ks_model_id" eval="ref('litigation.model_consulting_consulting')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">briefcase</field>
+            <field name="ks_dashboard_item_theme">Slightlydesaturatedcyan</field>
+            <field name="ks_background_color">#72abb3,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('litigation.group_law_consultant'))]"/>
+        </record>
+        
+        <record id="litigation_2" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">تحليل القضايا</field>
+            <field name="ks_model_id" eval="ref('litigation.model_litigation_litigation')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('litigation.field_litigation_litigation__is_approve'),ref('litigation.field_litigation_litigation__is_draft'),ref('litigation.field_litigation_litigation__is_confirm'),ref('litigation.field_litigation_litigation__is_suspended'),ref('litigation.field_litigation_litigation__is_refuse'),ref('litigation.field_litigation_litigation__is_close')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('litigation.field_litigation_litigation__user_id')"/>
+            <field name="ks_chart_item_color">cool</field>
+            <field name="ks_bar_chart_stacked">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="contractconsulting" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">استشارات العقود</field>
+            <field name="ks_model_id" eval="ref('litigation.model_contractconsulting_contractconsulting')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">file-text-o</field> 
+            <field name="ks_dashboard_item_theme">Grayishlimegreen</field>
+            <field name="ks_background_color">#aebaac,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field> 
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('litigation.group_law_consultant'))]"/>
+        </record>
+        
+        <record id="litigation_report" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">تقارير الجلسات</field>
+            <field name="ks_model_id" eval="ref('litigation.model_litigation_report')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">list</field> 
+            <field name="ks_dashboard_item_theme">Softyellow</field>
+            <field name="ks_background_color">#e4f04e,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('litigation.group_law_lawyer'))]"/>
+        </record>
+        
+        <record id="attorney" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">الوكالات</field>
+            <field name="ks_model_id" eval="ref('litigation.model_attorney_attorney')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">id-card-o</field> 
+            <field name="ks_dashboard_item_theme">Darkmoderatecyan</field>
+            <field name="ks_background_color">#3daa9d,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('litigation.group_law_lawyer'))]"/>
+        </record>
+        
+        <record id="consulting_2" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">تحليل الاستشارات</field> 
+            <field name="ks_model_id" eval="ref('litigation.model_consulting_consulting')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('litigation.field_consulting_consulting__is_approve'),ref('litigation.field_consulting_consulting__is_draft'),ref('litigation.field_consulting_consulting__is_confirm'),ref('litigation.field_consulting_consulting__is_suspended'),ref('litigation.field_consulting_consulting__is_refuse'),ref('litigation.field_consulting_consulting__is_close')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('litigation.field_consulting_consulting__user_id')"/>
+            <field name="ks_chart_item_color">cool</field>
+            <field name="ks_bar_chart_stacked">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="contractconsulting_1" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_litigation')"/>
+            <field name="name">تحليل استشارات العقود</field>
+            <field name="ks_model_id" eval="ref('litigation.model_contractconsulting_contractconsulting')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('litigation.field_contractconsulting_contractconsulting__is_approve'),ref('litigation.field_contractconsulting_contractconsulting__is_draft'),ref('litigation.field_contractconsulting_contractconsulting__is_confirm'),ref('litigation.field_contractconsulting_contractconsulting__is_suspended'),ref('litigation.field_contractconsulting_contractconsulting__is_refuse'),ref('litigation.field_contractconsulting_contractconsulting__is_close')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('litigation.field_contractconsulting_contractconsulting__user_id')"/>
+            <field name="ks_chart_item_color">cool</field>
+            <field name="ks_bar_chart_stacked">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="ks_my_default_dashboard_bills" model="ks_dashboard_mtn.board">
+            <field name="name">التقارير المالية</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record> 
+        
+        <record id="bills_management" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_bills')"/>
+            <field name="name">الفواتير</field>
+            <field name="ks_model_id" eval="ref('Bills.model_bills_management')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">money</field> 
+            <field name="ks_dashboard_item_theme">Softcyan-limegreen</field>
+            <field name="ks_background_color">#47e278,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('account.group_account_manager'))]"/>
+        </record>
+        
+        <record id="custody_management" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_bills')"/>
+            <field name="name">العهدة المالية</field>
+            <field name="ks_model_id" eval="ref('Bills.model_custody_management')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">credit-card-alt</field> 
+            <field name="ks_dashboard_item_theme">Moderatelimegreen</field>
+            <field name="ks_background_color">#67d74f,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="asset_custody" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_bills')"/>
+            <field name="name">العهدة العينية</field>
+            <field name="ks_model_id" eval="ref('Bills.model_asset_custody')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">laptop</field> 
+            <field name="ks_dashboard_item_theme">Moderateyellow</field>
+            <field name="ks_background_color">#d7b941 ,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="buying_order" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_bills')"/>
+            <field name="name">سند الصرف</field>
+            <field name="ks_model_id" eval="ref('Bills.model_buying_order')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">file-text-o</field> 
+            <field name="ks_dashboard_item_theme">Lightgrayishyellow</field>
+            <field name="ks_background_color">#e1e3ce,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="sale_report" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_bills')"/>
+            <field name="name">تحليل المبيعات</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_model_id" eval="ref('sale.model_sale_report')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('sale.field_sale_report__price_subtotal')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('sale.field_sale_report__date')"/>
+            <field name="ks_chart_date_groupby">day</field>
+            <field name="ks_chart_item_color">warm</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_dashboard_item_type">ks_line_chart</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('account.group_account_manager'))]"/>
+        </record>
+        
+        <record id="ks_my_default_dashboard_hr" model="ks_dashboard_mtn.board">
+            <field name="name">تقارير الموارد البشرية</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record>
+        
+        <record id="hr_leave_allocation" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">مخصص الإجازات</field>
+            <field name="ks_model_id" eval="ref('hr_holidays.model_hr_leave_allocation')"/>
+            <field name="ks_dashboard_item_type">ks_pie_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_item_color">warm</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_semi_circle_chart">1</field>
+            <field name="ks_chart_relation_groupby" eval="ref('hr_holidays.field_hr_leave_allocation__holiday_status_id')"/>
+            <field name="ks_chart_relation_sub_groupby" eval="ref('hr_holidays.field_hr_leave_allocation__holiday_status_id')"/>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('hr_holidays.field_hr_leave_allocation__number_of_days')])]"/>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="worked_hours_1" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">حضور اليوم</field>
+            <field name="ks_model_id" eval="ref('hr_attendance.model_hr_attendance_report')"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr_attendance.field_hr_attendance_report__worked_hours')"/> 
+            <field name="ks_date_filter_field" eval="ref('hr_attendance.field_hr_attendance_report__check_in')"/>
+            <field name="ks_sort_by_field" eval="ref('hr_attendance.field_hr_attendance_report__worked_hours')"/>
+            <field name="ks_list_view_type">ungrouped</field>
+            <field name="ks_list_view_fields" eval="[(6, 0, [ref('hr_attendance.field_hr_attendance_report__worked_hours'),ref('hr_attendance.field_hr_attendance_report__employee_id'),ref('hr_attendance.field_hr_attendance_report__check_in')])]"/>
+            <field name="ks_dashboard_item_type">ks_list_view</field>
+            <field name="ks_date_filter_selection">l_day</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('hr_attendance.group_hr_attendance_manager'))]"/>
+        </record>
+        
+        <record id="days_early" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">عدد أيام الخروج المبكر</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__days_early')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">cool</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="hr_employee" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">عدد أيام التأخير</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field> 
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__days_late')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">warm</field> 
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="days_absent" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">عدد أيام الغياب</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__days_absent')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">cool</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="days_late_out" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">عدد أيام الخروج المتأخر</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__days_late_out')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">warm</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="number_of_holidays" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">عدد أيام الاجازات(مرضية/سنوية)</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__number_of_holidays')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">cool</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="days_working" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">عدد أيام العمل</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__days_working')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">warm</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="actual_work" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">عدد أيام العمل الفعلية</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__actual_work')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">cool</field> 
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="commitment_rate" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_hr')"/>
+            <field name="name">نسبة الالتزام بالحضور</field>
+            <field name="ks_model_id" eval="ref('work_trip.model_hr_employee')"/>
+            <field name="ks_dashboard_item_type">ks_bar_chart</field>
+            <field name="ks_chart_data_count_type">sum</field>
+            <field name="ks_chart_measure_field" eval="[(6, 0, [ref('work_trip.field_hr_employee__commitment_rate')])]"/>
+            <field name="ks_chart_relation_groupby" eval="ref('hr.field_hr_employee__name')"/>
+            <field name="ks_chart_item_color">warm</field> 
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_company_id" eval="0"/>
+        </record>
+        
+        <record id="ks_my_default_dashboard_app" model="ks_dashboard_mtn.board">
+            <field name="name">التقارير</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record>
+        
+        <record id="project_task" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_app')"/>
+            <field name="name">المهام</field>
+            <field name="ks_model_id" eval="ref('litigation.model_project_task')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">list-ul</field> 
+            <field name="ks_dashboard_item_theme">Softorange</field>
+            <field name="ks_background_color">#e2a347,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record> -->
+        
+<!--         <record id="ks_my_default_dashboard_Internal_slate" model="ks_dashboard_mtn.board">
+            <field name="name">تقارير لوائح العمل الداخلية</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record> -->
+        
+<!--         <record id="internal_slate" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_app')"/>
+            <field name="name">لوائح العمل الداخلية</field>
+            <field name="ks_model_id" eval="ref('Internal_slate.model_internal_slate')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">book</field> 
+            <field name="ks_dashboard_item_theme">Brightyellow</field>
+            <field name="ks_background_color">#e3d342,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('Internal_slate.group_slate_user'))]"/>
+        </record> -->
+        
+<!--         <record id="ks_my_default_dashboard_error404" model="ks_dashboard_mtn.board">
+            <field name="name">تقارير التذاكر التقنية</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record> -->
+        
+<!--         <record id="error404_error404" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_app')"/>
+            <field name="name">التذاكر التقنية</field>
+            <field name="ks_model_id" eval="ref('error404.model_error404_error404')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">hashtag</field> 
+            <field name="ks_dashboard_item_theme">Mostlydesaturateddarkcyan-limegreen</field>
+            <field name="ks_background_color">#51927e,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+        </record> -->
+        
+<!--         <record id="ks_my_default_dashboard_helpdesk" model="ks_dashboard_mtn.board">
+            <field name="name">تقارير خدمة العملاء</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record> -->
+        
+<!--         <record id="helpdesk_ticket" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_app')"/>
+            <field name="name">خدمة العملاء</field>
+            <field name="ks_model_id" eval="ref('helpdesklitigation.model_helpdesk_ticket')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">headphones</field> 
+            <field name="ks_dashboard_item_theme">Mostlydesaturateddarklimegreen</field>
+            <field name="ks_background_color">#51925e,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('helpdesk.group_helpdesk_user'))]"/>
+        </record> -->
+        
+<!--         <record id="ks_my_default_dashboard_commitments" model="ks_dashboard_mtn.board">
+            <field name="name">تقارير الالتزام</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record> -->
+        
+<!--         <record id="company_commitments" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_app')"/>
+            <field name="name">الالتزام</field>
+            <field name="ks_model_id" eval="ref('commitments.model_company_commitments')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">file-text-o</field> 
+            <field name="ks_dashboard_item_theme">Darkgrayishyellow</field>
+            <field name="ks_background_color">#a7a69e,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('commitments.group_commitments_user'))]"/>
+        </record> -->
+        
+<!--         <record id="ks_my_default_dashboard_balagh" model="ks_dashboard_mtn.board">
+            <field name="name">تقارير بلاغ</field>
+            <field name="ks_dashboard_state">Locked</field>
+            <field name="ks_dashboard_menu_name">لوحة المعلومات</field>
+            <field name="ks_dashboard_active">1</field>
+            <field name="ks_dashboard_default_template" ref="ks_dashboard_mtn.ks_blank"/>
+        </record> -->
+        
+<!--         <record id="balagh_balagh" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_app')"/>
+            <field name="name">بلاغ</field>
+            <field name="ks_model_id" eval="ref('balagh.model_balagh_balagh')"/>
+            <field name="ks_dashboard_item_type">ks_tile</field>
+            <field name="ks_record_count_type">count</field>
+            <field name="ks_default_icon">envelope-o</field> 
+            <field name="ks_dashboard_item_theme">Moderatecyan</field>
+            <field name="ks_background_color">#45b4d4,0.99</field>
+            <field name="ks_font_color">#000000,0.99</field>
+            <field name="ks_default_icon_color">#000000,0.99</field>
+            <field name="ks_layout">layout2</field>
+            <field name="ks_company_id" eval="0"/>
+            <field name="group_ids" eval="[(4,ref('balagh.group_balagh_user'))]"/>
+        </record> 
+        
+        <record id="project_project" model="ks_dashboard_mtn.item">
+            <field name="ks_dashboard_mtn_board_id" eval="ref('ks_dashboard_mtn.ks_my_default_dashboard_app')"/>
+            <field name="name">المشاريع</field>
+            <field name="ks_model_id" eval="ref('project.model_project_project')"/>
+            <field name="ks_dashboard_item_type">ks_pie_chart</field>
+            <field name="ks_chart_data_count_type">count</field>
+            <field name="ks_chart_item_color">cool</field>
+            <field name="ks_show_data_value">1</field>
+            <field name="ks_chart_relation_groupby" eval="ref('litigation.field_project_project__project_type')"/>
+            <field name="ks_company_id" eval="0"/>
+        </record> -->
+        
+    </data>
+</odoo>

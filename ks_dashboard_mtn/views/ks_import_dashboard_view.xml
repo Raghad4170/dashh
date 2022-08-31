@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+
+        <record id="ks_import_dashboard_form_view" model="ir.ui.view">
+            <field name="name">ks_dashboard_mtn.import form</field>
+            <field name="model">ks_dashboard_mtn.import</field>
+            <field name="arch" type="xml">
+                 <form string="تصدير لوحة المعلومات">
+                <group>
+                    <group>
+                        <field name="ks_import_dashboard" string="تحميل لوحة المعلومات Json" required="1"/>
+                        <field name="ks_top_menu_id" string="إظهار ضمن القائمة" required="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="ks_do_action" string="حفظ" type="object" class="btn-primary"/>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+        </record>
+
+
+        <record id="ks_import_dashboard_action" model="ir.actions.act_window">
+            <field name="name">تصدير لوحة المعلومات</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ks_dashboard_mtn.import</field>
+            <field name="view_mode">form</field>
+             <field name="target">new</field>
+        </record>
+
+        <menuitem name="تصدير لوحة المعلومات" id="ks_dashboard_mtn.ks_import_dashboard_menu"
+                  parent="ks_dashboard_mtn.configuration_menu"
+                  action="ks_dashboard_mtn.ks_import_dashboard_action" groups="base.group_system"/>
+
+<!--                <menuitem name="Dashboard Import" id="ks_dashboard_mtn.dashboard_layout_menu"-->
+<!--                  parent="ks_dashboard_mtn.configuration_menu"-->
+<!--                  action="ks_dashboard_mtn.layout_tree_action_window" groups="ks_dashboard_mtn_group_manager"/>-->
+    </data>
+
+</odoo>
